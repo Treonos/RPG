@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net.Security;
 using System.Runtime.CompilerServices;
 
@@ -6,7 +6,7 @@ class Program
 {
     static void Main()
     {
-        Output("WELCOME TO PABLO MUSHROOMS\n", ConsoleColor.Magenta);
+        WriteColor("WELCOME TO PABLO MUSHROOMS\n", ConsoleColor.Magenta);
 
         while (true)
         {
@@ -47,27 +47,34 @@ class Program
 
                 if (enemy.Hp <= 0)
                 {
+                    string input = " ";
                     Thread.Sleep(2000);
                     Console.WriteLine("You defeated the enemy!\n");
                     player.Heal();
                     player.GainExp(Convert.ToInt32((hpRange + strRange + spdRange) / 3));
                     if(enemyNum++ % 3 == 0) player.Equip();
-                    Console.Write("\nPress Enter to continue");
-                    Console.ReadLine();
+                    Console.Write("\nPress Enter to continue or press I to view your inventory ");
+                    input = Console.ReadLine();
+                    if(input.Equals("I", StringComparison.OrdinalIgnoreCase))
+                    {
+                        player.ViewInventory();
+                    }
+                    
+                    
                     hpRange += 1 + Convert.ToInt32(hpRange * 0.10);
                     strRange += 1 + Convert.ToInt32(strRange * 0.10);
                     spdRange += 1 + Convert.ToInt32(spdRange * 0.10);
                 }
                 else if (player.Hp <= 0)
                 {
-                    Output("\nGAME OVER\n", ConsoleColor.Red);
+                    WriteColor("\nGAME OVER\n", ConsoleColor.Red);
                     enemyNum = 0;
                 }
             }
         }
     }
 
-    static void Output(string message, ConsoleColor color = ConsoleColor.White)
+    static void WriteColor(string message, ConsoleColor color = ConsoleColor.White)
     {
         Console.ForegroundColor = color;
         Console.Write(message);
@@ -77,9 +84,12 @@ class Program
 
 class Player
 {
-    public int itemHp { get; private set; }
-    public int itemStr { get; private set; }
-    public int itemSpd { get; private set; }
+    public int WeaponStr { get; private set; }
+    public int WeaponSpd { get; private set; }
+    public int ArmorHp { get; private set; }
+    public int ArmorStr { get; private set; }
+    public int BootsHp { get; private set; }
+    public int BootsSpd { get; private set; }
     public int Hp  { get; private set; }
     public int Str { get; private set; }
     public int Spd { get; private set; }
@@ -92,9 +102,11 @@ class Player
     public int level = 1;
     public int maxItemStat = 1;
 
-    public int pastItemHp = 0, pastItemStr = 0, pastItemSpd = 0;
+    public int pastWeaponStr = 0, pastWeaponSpd = 0;
+    public int pastArmorStr = 0, pastArmorHp = 0;
+    public int pastBootsHp = 0, pastBootsSpd = 0;
 
-    private void Output(string message, ConsoleColor color = ConsoleColor.White)
+    private void WriteColor(string message, ConsoleColor color = ConsoleColor.White)
     {
         Console.ForegroundColor = color;
         Console.Write(message);
@@ -102,10 +114,6 @@ class Player
     }
     public Player()
     {
-        maxHp = 1;
-        Hp = maxHp;
-        Str = 1;
-        Spd = 1;
         AvailableStatPoints = 0;
 
         string confirm = "";
@@ -137,31 +145,31 @@ class Player
                 {
                     case 1:
                         optName = "Knight";
-                        Hp = 15;
+                        maxHp = 15;
                         Str = 8;
                         Spd = 3;
                         break;
                     case 2:
                         optName = "Mage";
-                        Hp = 8;
+                        maxHp = 8;
                         Str = 13;
-                        Spd = 5;
+                        Spd = 6;
                         break;
                     case 3:
                         optName = "Archer";
-                        Hp = 6;
+                        maxHp = 6;
                         Str = 9;
                         Spd = 11;
                         break;
                     default:
-                        Console.WriteLine("Choose a correct number!");
+                        WriteColor("Incorrect number!", ConsoleColor.Red);
                         continue;
                 }
-
+                Hp = maxHp;
                 Console.Write($"So, you choose {optName}? y/n: ");
                 confirm = Console.ReadLine();
 
-                Console.WriteLine($"\nCurrent stats:\nHealth: {Hp}  |  Strength: {Str}  |  Speed: {Spd}");
+                Display();
             }
             catch (FormatException)
             {
@@ -175,7 +183,7 @@ class Player
 
         Console.WriteLine("\nChoose your path: ");
         Console.WriteLine("1. Desert");
-        Console.WriteLine("2. Forest");
+        Console.WriteLine("2. Castle");
         Console.WriteLine("3. Swamp");
         Console.WriteLine("4. Mountains");
         do
@@ -190,7 +198,7 @@ class Player
                         optName = "Desert";
                         break;
                     case 2:
-                        optName = "Forest";
+                        optName = "Castle";
                         break;
                     case 3:
                         optName = "Swamp";
@@ -199,7 +207,7 @@ class Player
                         optName = "Mountains";
                         break;
                     default:
-                        Console.WriteLine("Choose a correct number!");
+                        WriteColor("Incorrect number!", ConsoleColor.Red);
                         continue;
                 }
 
@@ -214,18 +222,17 @@ class Player
         } while (!(confirm.Equals("Y", StringComparison.OrdinalIgnoreCase)));
         confirm = "";
     }
-
     public void AssignStatPoints(string stat, int points)
     {
         if (points > AvailableStatPoints)
         {
-            Console.WriteLine("Not enough points!");
+            WriteColor("Not enough points!", ConsoleColor.Red);
             return;
         }
 
         if (points < 0)
         {
-            Console.WriteLine("You cannot assign negative points!");
+            WriteColor("You cannot assign negative points!", ConsoleColor.Red);
             return;
         }
 
@@ -245,48 +252,53 @@ class Player
                 Spd += points;
                 break;
             default:
-                Console.WriteLine("Invalid stat!");
+                WriteColor("Invalid stat!", ConsoleColor.Red);
                 return;
         }
 
         AvailableStatPoints -= points;
         Console.WriteLine($"{points} Points assigned to {stat}.");
+        Console.WriteLine($"\nPoints left: {AvailableStatPoints}");
     }
-
     public void Display()
     {
-        Console.WriteLine($"\nCurrent stats:\nHealth: {Hp}  |  Strength: {Str}  |  Speed: {Spd}");
-        Console.WriteLine($"\nPoints left: {AvailableStatPoints}\n");
+        Console.WriteLine($"\nCurrent stats:\nHealth: {Hp}/{maxHp}  |  Strength: {Str}  |  Speed: {Spd}");
     }
-
     public void TakeDamage(int damage)
     {
         Console.WriteLine($"\nThe enemy attacks {username}!");
         Hp -= damage;
         Thread.Sleep(2000);
         Console.Write("You take ");
-        Output(Convert.ToString(damage), ConsoleColor.Red);
+        WriteColor(Convert.ToString(damage), ConsoleColor.Red);
         Console.Write(" damage, remaining health: ");
         if (Hp < 0) Hp = 0;
-        Output(Convert.ToString(Hp), ConsoleColor.Green);
+        WriteColor(Convert.ToString(Hp), ConsoleColor.Green);
     }
-
     public void Heal()
     {
-        if (Hp < maxHp)
+        int heal = Convert.ToInt32(0.75 * maxHp);
+        if(Hp < maxHp)
         {
-            int heal = (int)(0.9 * Hp);
-            Hp = Math.Min(maxHp, Hp + heal);
-            Thread.Sleep(2000);
-            Output($"You healed by {heal}. Current health: {Hp}\n", ConsoleColor.Green);
+            if(Hp + heal <= maxHp)
+            {
+                Hp += heal;
+                Thread.Sleep(2000);
+                WriteColor($"You healed by {heal}. Current health: {Hp}\n", ConsoleColor.Green);
+            }
+            else
+            {
+                Hp = maxHp;
+                Thread.Sleep(2000);
+                WriteColor($"You healed by {heal}. Current health: {Hp}\n", ConsoleColor.Green);
+            }
         }
     }
-
     public void GainExp(int exp)
     {
         currentExp += exp;
         Thread.Sleep(2000);
-        Output($"{exp} experience points earned. Current exp: {currentExp}/{expNeeded}\n", ConsoleColor.Blue);
+        WriteColor($"{exp} experience points earned. Current exp: {currentExp}/{expNeeded}\n", ConsoleColor.Blue);
 
         if (currentExp >= expNeeded)
         {
@@ -295,12 +307,11 @@ class Player
             expNeeded = Convert.ToInt32(expNeeded * 1.6);
         }
     }
-
     public void LevelUp()
     {
         level++;
         Thread.Sleep(2000);
-        Console.WriteLine($"Level Up! You gain {Convert.ToInt32(level * 1.6)} points to assign.");
+        WriteColor($"\nLevel Up! You gain {Convert.ToInt32(level * 1.6)} points to assign.\n", ConsoleColor.DarkMagenta);
         AvailableStatPoints += Convert.ToInt32(level * 1.6);
 
         while (AvailableStatPoints > 0)
@@ -314,11 +325,11 @@ class Player
             }
             else
             {
-                Console.WriteLine("Invalid stat! Please choose from (hp, str, spd).");
+                WriteColor("Invalid stat!.", ConsoleColor.Red);
             }
         }
+        Display();
     }
-
     private string GetStatInput()
     {
         Console.Write("Which stat do you want to assign points to (hp, str, spd)? ");
@@ -334,66 +345,166 @@ class Player
                stat.Equals("spd", StringComparison.OrdinalIgnoreCase) ||
                stat.Equals("speed", StringComparison.OrdinalIgnoreCase);
     }
-
     private void AssignPointsToStat(string stat)
     {
         Console.Write("How many points do you want to assign? ");
         try
         {
             int points = Convert.ToInt32(Console.ReadLine());
+
             AssignStatPoints(stat, points);
         }
         catch (FormatException)
         {
             Console.WriteLine("Please enter a valid number.");
         }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Please enter a valid number.");
+        }
     }
-
     public void Equip()
     {
-        string Type = "";
-        string Rarity = "";
-    
         Random rand = new Random();
         int typeNum = rand.Next(1, 3);
 
         switch (typeNum)
         {
-            case 1: Type = "Weapon"; break;
-            case 2: Type = "Armor"; break;
-            case 3: Type = "Boots"; break;
+            case 1: Weapon(); break;
+            case 2: Armor(); break;
+            case 3: Boots(); break;
         }
+    }
+    private void Weapon()
+    {
+        Random rand = new Random();
+        displayItem("Weapon");
+        WeaponStr = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
+        WeaponSpd = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
 
+        Console.WriteLine($"New weapon stats:\nMaxHp:    0    |   Str:    {WeaponStr}   |   Spd:    {WeaponSpd}\n");
+        Console.Write($"Equipped weapon stats:\n");
+        if(pastWeaponStr > 0 || pastWeaponSpd > 0)
+        {
+            Console.Write($"MaxHp:    0    |   Str:    {pastWeaponStr}   |   Spd:    {pastWeaponSpd}\n");
+        }
+        else
+        {
+            Console.Write("No weapon equipped\n");
+        }
+            
+        Console.Write("\nWould you like to equip the item?(Your current item will be lost!) y/n ");
+        string confirm = Console.ReadLine();
+        if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        {
+            Str += WeaponStr;
+            Spd += WeaponSpd;
+
+            Str -= pastWeaponStr;
+            Spd -= pastWeaponSpd;
+
+            pastWeaponStr = WeaponStr;
+            pastWeaponSpd = WeaponSpd;
+
+            Display();
+        }
+    }
+    private void Armor()
+    {
+        Random rand = new Random();
+        displayItem("Armor");
+        ArmorHp = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
+        ArmorStr = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
+
+        Console.WriteLine($"New armor stats:\nMaxHp:    {ArmorHp}    |   Str:    {ArmorStr}   |   Spd:    0\n");
+        Console.WriteLine($"Equipped armor stats:\n");
+        if (pastArmorHp > 0 || pastArmorStr > 0)
+        {
+            Console.Write($"MaxHp:    {pastArmorHp}    |   Str:    {pastArmorStr}   |   Spd:    0\n");
+        }
+        else
+        {
+            Console.Write("No armor equipped\n");
+        }
+        Console.Write("\nWould you like to equip the item?(Your current item will be lost!) y/n ");
+        string confirm = Console.ReadLine();
+        if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        {
+            maxHp += ArmorHp;
+            Str += ArmorStr;
+
+            maxHp -= pastArmorHp;
+            Str -= pastArmorStr;
+
+            pastArmorHp = ArmorHp;
+            pastArmorStr = ArmorStr;
+
+            Display();
+        }
+    }
+    private void Boots()
+    {
+        Random rand = new Random();
+        displayItem("Boots");
+        BootsHp = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
+        BootsSpd = 1 + rand.Next(Convert.ToInt32(maxItemStat / 3), maxItemStat);
+
+        Console.WriteLine($"New boots stats:\nMaxHp:    {BootsHp}    |   Str:    0   |   Spd:    {BootsSpd}\n");
+        Console.WriteLine($"Equipped boots stats:\n");
+        if (pastBootsHp > 0 || pastBootsSpd > 0)
+        {
+            Console.Write($"MaxHp:    {pastBootsHp}    |   Str:    0   |   Spd:    {pastBootsSpd}\n");
+        }
+        else
+        {
+            Console.Write("No boots equipped\n");
+        }
+        Console.Write("\nWould you like to equip the item?(Your current item will be lost!) y/n ");
+        string confirm = Console.ReadLine();
+        if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        {
+            maxHp += BootsHp;
+            Spd += BootsSpd;
+
+            maxHp -= pastBootsHp;
+            Spd -= pastBootsSpd;
+
+            pastBootsHp = BootsHp;
+            pastBootsSpd = BootsSpd;
+
+            Display();
+        }
+    }
+    public void displayItem(string Type)
+    {
+        Random rand = new Random();
+        WriteColor("\nYou got ", ConsoleColor.DarkYellow);
         int rarityNum = rand.Next(1, 100);
-
-        Output("\nYou got ", ConsoleColor.DarkYellow);
+        string Rarity = " ";
         switch (rarityNum)
         {
             case var _ when rarityNum >= 50:
                 Rarity = "Common";
-                Output($"{Rarity}", ConsoleColor.DarkGray);
+                WriteColor($"{Rarity}", ConsoleColor.DarkGray);
                 break;
             case var _ when rarityNum >= 25 && rarityNum < 50:
                 Rarity = "Uncommon";
-                Output($"{Rarity}", ConsoleColor.DarkGreen);
+                WriteColor($"{Rarity}", ConsoleColor.DarkGreen);
                 break;
             case var _ when rarityNum >= 9 && rarityNum < 25:
                 Rarity = "Rare";
-                Output($"{Rarity}", ConsoleColor.DarkBlue);
+                WriteColor($"{Rarity}", ConsoleColor.DarkBlue);
                 break;
             case var _ when rarityNum >= 2 && rarityNum < 9:
                 Rarity = "Epic";
-                Output($"{Rarity}", ConsoleColor.Magenta);
+                WriteColor($"{Rarity}", ConsoleColor.Magenta);
                 break;
             case var _ when rarityNum == 1:
                 Rarity = "Mythical";
-                Output($"{Rarity}", ConsoleColor.DarkRed);
+                WriteColor($"{Rarity}", ConsoleColor.DarkRed);
                 break;
         }
-
-        Output($" {Type}\n", ConsoleColor.DarkYellow);
-
-        maxItemStat = Convert.ToInt32(level * 4);
+        WriteColor($" {Type}\n", ConsoleColor.DarkYellow);
 
         switch (Rarity)
         {
@@ -413,47 +524,38 @@ class Player
                 maxItemStat = Convert.ToInt32(level * 3);
                 break;
         }
+    }
 
-        switch (Type)
+    public void ViewInventory()
+    {
+        Console.Write($"Equipped weapon stats: ");
+        if (pastWeaponStr > 0 || pastWeaponSpd > 0)
         {
-            case "Weapon":
-                itemHp = 0;
-                itemStr = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                itemSpd = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                break;
-            case "Armor":
-                itemHp = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                itemStr = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                itemSpd = 0;
-                break;
-            case "Boots":
-                itemHp = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                itemStr = 0;
-                itemSpd = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), maxItemStat);
-                break;
+            Console.Write($"MaxHp:    0    |   Str:    {pastWeaponStr}   |   Spd:    {pastWeaponSpd}\n");
+        }
+        else
+        {
+            Console.Write("No weapon equipped\n");
         }
 
-        Console.WriteLine($"New item stats:\nHp:    {itemHp}    |   Str:    {itemStr}   |   Spd:    {itemSpd}\n");
-        Console.WriteLine($"Current item stats:\nHp:    {pastItemHp}    |   Str:    {pastItemStr}   |   Spd:    {pastItemSpd}\n");
-        Console.Write("Would you like to equip the item?(Your current item will be lost!) y/n ");
-        string confirm = Console.ReadLine();
-        if (confirm.Equals("Y", StringComparison.OrdinalIgnoreCase))
+        Console.Write($"Equipped armor stats: ");
+        if (pastArmorHp > 0 || pastArmorStr > 0)
         {
-            Hp += itemHp;
-            maxHp += itemHp;
-            Str += itemStr;
-            Spd += itemSpd;
+            Console.Write($"MaxHp:    {pastArmorHp}    |   Str:    {pastArmorStr}   |   Spd:    0\n");
+        }
+        else
+        {
+            Console.Write("No armor equipped\n");
+        }
 
-            Hp -= pastItemHp;
-            maxHp -= pastItemHp;
-            Str -= pastItemStr;
-            Spd -= pastItemSpd;
-
-            pastItemHp = itemHp;
-            pastItemStr = itemStr;
-            pastItemSpd = itemSpd;
-
-            Console.WriteLine($"\nCurrent stats:\nHealth: {Hp}  |  Strength: {Str}  |  Speed: {Spd}");
+        Console.Write($"Equipped boots stats: ");
+        if (pastBootsHp > 0 || pastBootsSpd > 0)
+        {
+            Console.Write($"MaxHp:    {pastBootsHp}    |   Str:    0   |   Spd:    {pastBootsSpd}\n");
+        }
+        else
+        {
+            Console.Write("No boots equipped\n");
         }
     }
 }
@@ -464,7 +566,7 @@ class Enemy
     public int Str { get; private set; }
     public int Spd { get; private set; }
 
-    private void Output(string message, ConsoleColor color = ConsoleColor.White)
+    private void WriteColor(string message, ConsoleColor color = ConsoleColor.White)
     {
         Console.ForegroundColor = color;
         Console.Write(message);
@@ -478,7 +580,7 @@ class Enemy
         Str = rand.Next(playerLevel, strRange);
         Spd = rand.Next(playerLevel, spdRange);
 
-        Output($"\nAn enemy appears with {Hp} hp, {Str} str and {Spd} spd", ConsoleColor.Yellow);
+        WriteColor($"\nAn enemy appears with {Hp} hp, {Str} str and {Spd} spd\n", ConsoleColor.Yellow);
     }
 
     public void TakeDamage(int damage)
@@ -486,9 +588,9 @@ class Enemy
         Hp -= damage;
         Thread.Sleep(2000);
         Console.Write("The enemy takes ");
-        Output($"{damage}", ConsoleColor.Red);
+        WriteColor($"{damage}", ConsoleColor.Red);
         if (Hp < 0) Hp = 0;
         Console.Write($" damage, remaining health: ");
-        Output($"{Hp}\n", ConsoleColor.Green);
+        WriteColor($"{Hp}\n", ConsoleColor.Green);
     }
 }
