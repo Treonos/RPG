@@ -1,7 +1,4 @@
 using System;
-using System.Net.Security;
-using System.Runtime.CompilerServices;
-
 class Program
 {
     static void Main()
@@ -171,9 +168,13 @@ class Player
 
                 Display();
             }
-            catch (FormatException)
+            catch(FormatException)
             {
                 Console.WriteLine("Please, choose a number from 1 to 3.");
+            }
+            catch (OverflowException)
+            {
+                WriteColor("Incorrect number!", ConsoleColor.Red);
             }
 
         } while (!(confirm.Equals("Y", StringComparison.OrdinalIgnoreCase)));
@@ -258,7 +259,7 @@ class Player
 
         AvailableStatPoints -= points;
         Console.WriteLine($"{points} Points assigned to {stat}.");
-        Console.WriteLine($"\nPoints left: {AvailableStatPoints}");
+        WriteColor($"\nPoints left: {AvailableStatPoints}", ConsoleColor.DarkMagenta);
     }
     public void Display()
     {
@@ -325,7 +326,7 @@ class Player
             }
             else
             {
-                WriteColor("Invalid stat!.", ConsoleColor.Red);
+                WriteColor("Invalid stat!", ConsoleColor.Red);
             }
         }
         Display();
@@ -563,6 +564,7 @@ class Player
 class Enemy
 {
     public int Hp { get; private set; }
+    public int maxHp { get; private set; }
     public int Str { get; private set; }
     public int Spd { get; private set; }
 
@@ -577,6 +579,7 @@ class Enemy
     {
         Random rand = new Random();
         Hp = rand.Next(playerLevel, hpRange);
+        maxHp = Hp;
         Str = rand.Next(playerLevel, strRange);
         Spd = rand.Next(playerLevel, spdRange);
 
@@ -590,7 +593,7 @@ class Enemy
         Console.Write("The enemy takes ");
         WriteColor($"{damage}", ConsoleColor.Red);
         if (Hp < 0) Hp = 0;
-        Console.Write($" damage, remaining health: ");
-        WriteColor($"{Hp}\n", ConsoleColor.Green);
+        Console.Write($" damage, enemy's health: ");
+        WriteColor($"{Hp}/{maxHp}\n", ConsoleColor.Green);
     }
 }
