@@ -439,12 +439,11 @@ class Player
         {
             WriteColor("No weapon equipped\n", ConsoleColor.Red);
         }
-
-        Console.Write("\nPress Y to equip the new item or X to discard it ");
-        ConsoleKeyInfo confirm = Console.ReadKey();
         bool done = false;
         while (!done)
         {
+            Console.Write("\nPress Y to equip the new item or X to discard it ");
+            ConsoleKeyInfo confirm = Console.ReadKey();
             if (confirm.Key == ConsoleKey.Y)
             {
                 Str += WeaponStr;
@@ -489,12 +488,12 @@ class Player
         {
             WriteColor("No armor equipped\n", ConsoleColor.Red);
         }
-        Console.Write("\nPress Y to equip the new item or N to discard it ");
-        ConsoleKeyInfo confirm = Console.ReadKey();
         
         bool done = false;
         while (!done)
         {
+            Console.Write("\nPress Y to equip the new item or N to discard it ");
+            ConsoleKeyInfo confirm = Console.ReadKey();
             if (confirm.Key == ConsoleKey.Y)
             {
                 maxHp += ArmorHp;
@@ -538,12 +537,13 @@ class Player
         {
             WriteColor("No boots equipped\n", ConsoleColor.Red);
         }
-        Console.Write("\nPress Y to equip the new item or N to discard it ");
-        ConsoleKeyInfo confirm = Console.ReadKey();
+
         
         bool done = false;
         while (!done)
         {
+            Console.Write("\nPress Y to equip the new item or N to discard it ");
+            ConsoleKeyInfo confirm = Console.ReadKey();
             if (confirm.Key == ConsoleKey.Y)
             {
                 maxHp += BootsHp;
