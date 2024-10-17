@@ -46,7 +46,9 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - Po zakończeniu walki z przeciwnikiem gracz może wyświetlić swój ekwipunek;
 - Po zakończeniu walki z przeciwnikiem gracz leczy się 75% maksymalnej ilości życia;
 ## 4. Instrukcja instalacji i uruchomienia
-- nie
+- Pobierz program Visual Studio https://visualstudio.microsoft.com/pl/
+- Podczas pobierania Visual Studio pobierz aplikacje konsoli c#
+- Po pobraniu Visual Studio pobierz plik PABLO MUSHROOMS i uruchom go w programie
 ## 5. Dokumentacja kodu
 - istnieje
 ## 6. Przykłady użycia
