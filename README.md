@@ -53,7 +53,8 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - istnieje
 ## 6. Przykłady użycia
 - Przykładowy scenariusz testowy:
-  - WELCOME TO PABLO MUSHROOMS
+
+WELCOME TO PABLO MUSHROOMS
 
 Enter your name: Pablo
 
