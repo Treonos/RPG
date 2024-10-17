@@ -1,5 +1,5 @@
 # "PABLO MUSHROOMS"
-
+(dla wersji z 10.10.2024)
 ## 1. OPIS PROJEKTU
 Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie rozrywki graczowi.
 
