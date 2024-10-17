@@ -54,6 +54,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
   - WELCOME TO PABLO MUSHROOMS
 
 Enter your name: Pablo
+
 Are you sure? y/n: y
 
 Choose your class, Pablo:
@@ -62,23 +63,31 @@ Choose your class, Pablo:
 3. Archer
 
 I choose option number: 2
+
 So, you choose Mage? y/n: y
 
 Current stats:
+
 Health: 8/8  |  Strength: 13  |  Speed: 6
 
 Choose your path:
+
 1. Desert
+
 2. Castle
+
 3. Swamp
+
 4. Mountains
 
 I choose option number: 3
+
 So, you choose Swamp? y/n: y
 
 An enemy appears with 4 hp, 4 str and 2 spd
 
 Pablo attacks the enemy!
+
 The enemy takes 13 damage, enemy's health: 0/4
 
 You defeated the enemy!
@@ -90,6 +99,7 @@ Press Enter to continue or press I to view your inventory
 An enemy appears with 1 hp, 3 str and 5 spd
 
 Pablo attacks the enemy!
+
 The enemy takes 13 damage, enemy's health: 0/1
 
 You defeated the enemy!
@@ -99,20 +109,31 @@ You defeated the enemy!
 Level Up! You gain 3 points to assign.
 
 Current stats:
+
 Health: 8/8  |  Strength: 13  |  Speed: 6
+
 Which stat do you want to assign points to (hp, str, spd)? hp
+
 How many points do you want to assign? 2
+
 2 Points assigned to hp.
 
 Points left: 1
+
 Current stats:
+
 Health: 10/10  |  Strength: 13  |  Speed: 6
+
 Which stat do you want to assign points to (hp, str, spd)? spd
+
 How many points do you want to assign? 1
+
 1 Points assigned to spd.
 
 Points left: 0
+
 Current stats:
+
 Health: 10/10  |  Strength: 13  |  Speed: 7
 
 Press Enter to continue or press I to view your inventory
@@ -120,6 +141,7 @@ Press Enter to continue or press I to view your inventory
 An enemy appears with 2 hp, 7 str and 7 spd
 
 Pablo attacks the enemy!
+
 The enemy takes 13 damage, enemy's health: 0/2
 
 You defeated the enemy!
@@ -127,10 +149,13 @@ You defeated the enemy!
 8 experience points earned. Current exp: 9/16
 
 You got Common Weapon
+
 New weapon stats:
+
 MaxHp:    0    |   Str:    2   |   Spd:    1
 
 Equipped weapon stats:
+
 No weapon equipped
 
 Would you like to equip the item?(Your current item will be lost!) y/n y
@@ -138,10 +163,15 @@ Would you like to equip the item?(Your current item will be lost!) y/n y
 Current stats:
 Health: 10/10  |  Strength: 15  |  Speed: 8
 
+
 Press Enter to continue or press I to view your inventory i
+
 Equipped weapon stats: MaxHp:    0    |   Str:    2   |   Spd:    1
+
 Equipped armor stats: No armor equipped
+
 Equipped boots stats: No boots equipped
+
 ## 7. Błędy i ich obsługa
 - W przypadku wpisania innej wartości od Y w pytaniach y/n program uznaje odpowiedź za N;
 - Przy wyborze klasy i drogi w przypadku wybrania złej wartosci program powtarza wybór;
