@@ -186,7 +186,7 @@ GAME OVER!
 
 Would you like to play again? y/n: n
 
-Po wybraniu opcji n następuje koniec algorytmu. W razie wybrania opcji y, rozgrywka rozpoczyna się na nowo.
+Po wybraniu opcji n następuje koniec gry. W razie wybrania opcji y, rozgrywka rozpoczyna się na nowo.
 
 ## 7. Błędy i ich obsługa
 - W przypadku wpisania innej wartości od Y w pytaniach y/n program uznaje odpowiedź za N;
