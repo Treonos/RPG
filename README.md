@@ -168,7 +168,6 @@ Would you like to equip the item?(Your current item will be lost!) y/n y
 Current stats:
 Health: 10/10  |  Strength: 15  |  Speed: 8
 
-
 Press Enter to continue or press I to view your inventory i
 
 Equipped weapon stats: MaxHp:    0    |   Str:    2   |   Spd:    1
@@ -176,6 +175,18 @@ Equipped weapon stats: MaxHp:    0    |   Str:    2   |   Spd:    1
 Equipped armor stats: No armor equipped
 
 Equipped boots stats: No boots equipped
+
+An enemy appears with 16hp, 11str and 9spd
+
+The enemy attacks Pablo!
+
+You take 11 damage, your health: 0/10
+
+GAME OVER!
+
+Would you like to play again? y/n: n
+
+Po wybraniu opcji n następuje koniec algorytmu. W razie wybrania opcji y, rozgrywka rozpoczyna się na nowo.
 
 ## 7. Błędy i ich obsługa
 - W przypadku wpisania innej wartości od Y w pytaniach y/n program uznaje odpowiedź za N;
