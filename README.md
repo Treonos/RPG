@@ -1,7 +1,6 @@
 # "PABLO MUSHROOMS"
 Matalowe płuca:
 KK11, FG6, SK10, PB3
-(Aktualne dla wersji z 10.10.2024)
 ## 1. OPIS PROJEKTU
 Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie rozrywki graczowi.
 
@@ -60,7 +59,7 @@ WELCOME TO PABLO MUSHROOMS
 
 Enter your name: Pablo
 
-Are you sure? y/n: y
+Press Y to confirm or X to change: y
 
 Choose your class, Pablo:
 1. Knight
