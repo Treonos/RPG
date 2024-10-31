@@ -12,7 +12,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
   - mag ma największą siłę, ale podobnie jak rycerz ma najmniejszą szybkość;
   - łucznik jest najszybszy, ale ma najmniej punktów zdrowia,
     - punkty zdrowia determinują to, ile obrażeń gracz może przyjąć zanim umrze;
-    - siła oznacza jak dużo punktów zdrowia bohater zabierze przeciwnikowi;
+    - siła oznacza jak dużo punktów zdrowia bohater zabierze przeciwnikowi. Zadane obrażenia przeciwnikowi mogą zostać zwiększone jednorazowo przez trafienie obrażeń krytycznych. Szansa na ich uzyskanie wynosi 12,5%;
     -  od szybkości zależy, która z postaci - bohater czy wróg - zaatakuje pierwsza,
 - Po wybraniu klasy bohatera, gracz wybiera jedną z czterech dróg:
   - pustynia;
