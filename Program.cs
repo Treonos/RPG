@@ -4,7 +4,7 @@ using System.Threading;
 class Program
 {
     static void Main()
-    {
+                {
         WriteColor("WELCOME TO PABLO MUSHROOMS\n", ConsoleColor.Magenta);
 
         while (true)
@@ -17,64 +17,123 @@ class Program
 
             while (player.Hp > 0) // Bitwa
             {
-                Enemy enemy = new Enemy(hpRange, strRange, spdRange, enemyNum, player.Biome); // Tworzenie nowego przeciwnika
-                while (enemy.Hp > 0 && player.Hp > 0)
+                if (!(enemyNum % 10 == 0))
                 {
-                    bool playerAttacksFirst = player.Spd >= enemy.Spd;
-                    Thread.Sleep(1000);
-                    if (playerAttacksFirst) // Jeżeli gracz jest szybszy od przeciwnika to atakuje jako pierwszy
+                    Enemy enemy = new Enemy(hpRange, strRange, spdRange, enemyNum, player.Biome); // Tworzenie nowego przeciwnika
+                    while (enemy.Hp > 0 && player.Hp > 0)
                     {
-                        enemy.TakeDamage(player.username, player.Str, player.critChance, player.critMultiplier);
-                        if (enemy.Hp > 0)
-                        {
-                            player.TakeDamage(enemy.Str);
-                        }
-                    }
-                    else // Jeżeli gracz jest wolniejszy od przeciwnika to atakuje jako drugi
-                    {
-                        player.TakeDamage(enemy.Str);
-                        if (player.Hp > 0)
+                        bool playerAttacksFirst = player.Spd >= enemy.Spd;
+                        Thread.Sleep(1000);
+                        if (playerAttacksFirst) // Jeżeli gracz jest szybszy od przeciwnika to atakuje jako pierwszy
                         {
                             enemy.TakeDamage(player.username, player.Str, player.critChance, player.critMultiplier);
+                            if (enemy.Hp > 0)
+                            {
+                                player.TakeDamage(enemy.Str);
+                            }
                         }
+                        else // Jeżeli gracz jest wolniejszy od przeciwnika to atakuje jako drugi
+                        {
+                            player.TakeDamage(enemy.Str);
+                            if (player.Hp > 0)
+                            {
+                                enemy.TakeDamage(player.username, player.Str, player.critChance, player.critMultiplier);
+                            }
+                        }
+                        Console.WriteLine();
                     }
-                    Console.WriteLine();
-                }
 
-                if (enemy.Hp <= 0) // Jeżeli zdrowie przeciwnika spadnie do 0, wygrywasz bitwe
-                {
-                    ConsoleKeyInfo input;
-                    Thread.Sleep(1000);
-                    Console.WriteLine("You defeated the enemy!\n");
-                    player.Heal(); // Leczenie gracza
-                    player.GainExp(Convert.ToInt32((enemy.MaxHp + enemy.Str + enemy.Spd) / 3));// Funkcja definiująca ile gracz otrzyma doświadczenia
-                    if (enemyNum++ % 3 == 0) player.GetItem();
-
-                    while (true)
+                    if (enemy.Hp <= 0) // Jeżeli zdrowie przeciwnika spadnie do 0, wygrywasz bitwe
                     {
-                        Console.Write("\nPress Enter to continue or press I to view your inventory ");
-                        input = Console.ReadKey();
-                        if (input.Key == ConsoleKey.Enter) break;
+                        ConsoleKeyInfo input;
+                        Thread.Sleep(1000);
+                        Console.WriteLine("You defeated the enemy!\n");
+                        player.Heal(); // Leczenie gracza
+                        player.GainExp(Convert.ToInt32((enemy.MaxHp + enemy.Str + enemy.Spd) / 3));// Funkcja definiująca ile gracz otrzyma doświadczenia
+                        if (enemyNum++ % 3 == 0) player.GetItem();
 
-                        else if (input.Key == ConsoleKey.I) player.ViewInventory(); // Otwieranie ekwipunku
+                        while (true)
+                        {
+                            Console.Write("\nPress Enter to continue or press I to view your inventory ");
+                            input = Console.ReadKey();
+                            if (input.Key == ConsoleKey.Enter) break;
 
-                        else WriteColor("\nInvalid input!", ConsoleColor.Red);
+                            else if (input.Key == ConsoleKey.I) player.ViewInventory(); // Otwieranie ekwipunku
+
+                            else WriteColor("\nInvalid input!", ConsoleColor.Red);
+                        }
+
+                        hpRange += 2;
+                        strRange += 2;
+                        spdRange += 2; // Zwiększenie zakresu statystyk przeciwnika
+                    }
+                    else if (player.Hp <= 0) // Jeżeli zdrowie gracza spadnie do 0 to gracz przegrywa gre
+                    {
+                        WriteColor("\nGAME OVER\n", ConsoleColor.Red);
+                        enemyNum = 0;
+                    }
+                }
+                else
+                {
+                    Boss boss = new Boss(hpRange, strRange, spdRange, enemyNum, player.Biome); // Tworzenie nowego przeciwnika
+                    while (boss.Hp > 0 && player.Hp > 0)
+                    {
+                        bool playerAttacksFirst = player.Spd >= boss.Spd;
+                        Thread.Sleep(1000);
+                        if (playerAttacksFirst) // Jeżeli gracz jest szybszy od przeciwnika to atakuje jako pierwszy
+                        {
+                            boss.TakeDamage(player.username, player.Str, player.critChance, player.critMultiplier);
+                            if (boss.Hp > 0)
+                            {
+                                player.TakeDamage(boss.Str);
+                            }
+                        }
+                        else // Jeżeli gracz jest wolniejszy od przeciwnika to atakuje jako drugi
+                        {
+                            player.TakeDamage(boss.Str);
+                            if (player.Hp > 0)
+                            {
+                                boss.TakeDamage(player.username, player.Str, player.critChance, player.critMultiplier);
+                            }
+                        }
+                        Console.WriteLine();
                     }
 
-                    hpRange += 1 + Convert.ToInt32(hpRange * 0.10);
-                    strRange += 1 + Convert.ToInt32(strRange * 0.10);
-                    spdRange += 1 + Convert.ToInt32(spdRange * 0.10); // Zwiększenie zakresu statystyk przeciwnika
-                }
-                else if (player.Hp <= 0) // Jeżeli zdrowie gracza spadnie do 0 to gracz przegrywa gre
-                {
-                    WriteColor("\nGAME OVER\n", ConsoleColor.Red);
-                    enemyNum = 0;
+                    if (boss.Hp <= 0) // Jeżeli zdrowie przeciwnika spadnie do 0, wygrywasz bitwe
+                    {
+                        ConsoleKeyInfo input;
+                        Thread.Sleep(1000);
+                        Console.WriteLine("You defeated the boss!\n");
+                        player.Heal(); // Leczenie gracza
+                        player.GainExp(Convert.ToInt32((boss.MaxHp + boss.Str + boss.Spd) / 3));// Funkcja definiująca ile gracz otrzyma doświadczenia
+                        player.GetItem();
+
+                        while (true)
+                        {
+                            Console.Write("\nPress Enter to continue or press I to view your inventory ");
+                            input = Console.ReadKey();
+                            if (input.Key == ConsoleKey.Enter) break;
+
+                            else if (input.Key == ConsoleKey.I) player.ViewInventory(); // Otwieranie ekwipunku
+
+                            else WriteColor("\nInvalid input!", ConsoleColor.Red);
+                        }
+
+                        hpRange += 2 + Convert.ToInt32(hpRange * 0.10);
+                        strRange += 2 + Convert.ToInt32(strRange * 0.10);
+                        spdRange += 2 + Convert.ToInt32(spdRange * 0.10); // Zwiększenie zakresu statystyk przeciwnika
+                        enemyNum++;
+                        player.ChoosePath();
+                    }
+                    else if (player.Hp <= 0) // Jeżeli zdrowie gracza spadnie do 0 to gracz przegrywa gre
+                    {
+                        WriteColor("\nGAME OVER\n", ConsoleColor.Red);
+                        enemyNum = 0;
+                    }
                 }
             }
         }
-    }
-
-
+    }    
 
     static void WriteColor(string message, ConsoleColor color = ConsoleColor.White) // Funkcja do wypisywania w konsoli kolorem
     {
@@ -97,7 +156,7 @@ class Player
     public int Hp { get; private set; }
     public int Str { get; private set; }
     public int Spd { get; private set; }
-
+    // Biomy
     public string Biome { get; private set; }
     public string Class { get; private set; }
 
@@ -106,7 +165,7 @@ class Player
 
     public string username = "";
     public int AvailableStatPoints = 0;
-    private int expNeeded = 10;
+    private int expNeeded = 25;
     private int currentExp = 0;
     private int maxHp;
     public int level = 1;
@@ -122,6 +181,11 @@ class Player
     public string pastArmorRarity = "";
     public string BootsRarity = "";
     public string pastBootsRarity = "";
+
+    public bool isDesertUsed = false;
+    public bool isCastleUsed = false;
+    public bool isSwampUsed = false;
+    public bool isMountainsUsed = false;
 
     static void WriteColor(string message, ConsoleColor color = ConsoleColor.White) // Funkcja do wypisywania w konsoli kolorem
     {
@@ -146,29 +210,29 @@ class Player
         }
     }
 
-    private void ChooseClass()
+    private void ChooseClass() // Wybieranie klasy
     {
         Console.WriteLine($"\nChoose your class, {username}: ");
         Console.WriteLine("1. Knight");
         Console.WriteLine("2. Mage");
         Console.WriteLine("3. Archer");
 
-        while (true)
+        while (true) 
         {
             Console.Write("\nI choose option number: ");
             ConsoleKeyInfo optNum = Console.ReadKey();
 
             if (optNum.Key == ConsoleKey.D1)
             {
-                maxHp = 21; Str = 11; Spd = 6;
+                maxHp = 105; Str = 11; Spd = 6;
             }
             else if (optNum.Key == ConsoleKey.D2)
             {
-                maxHp = 11; Str = 17; Spd = 10;
+                maxHp = 55; Str = 17; Spd = 10;
             }
             else if (optNum.Key == ConsoleKey.D3)
             {
-                maxHp = 8; Str = 10; Spd = 17;
+                maxHp = 40; Str = 10; Spd = 17;
             }
             else
             {
@@ -185,49 +249,137 @@ class Player
         }
     }
 
-    public void ChoosePath()
+    public void ChoosePath() // Wybieranie ścieżki
     {
+        var paths = new List<string>();
+        if (!isDesertUsed)
+        {
+            paths.Add("Desert");
+        }
+        if (!isCastleUsed)
+        {
+            paths.Add("Castle");
+        }
+        if (!isSwampUsed)
+        {
+            paths.Add("Swamp");
+        }
+        if (!isMountainsUsed)
+        {
+            paths.Add("Mountains");
+        }
         Console.WriteLine("\nChoose your path: ");
-        Console.WriteLine("1. Desert");
-        Console.WriteLine("2. Castle");
-        Console.WriteLine("3. Swamp");
-        Console.WriteLine("4. Mountains");
+
+        for(int i = 0; i < paths.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {paths[i]}");
+        }
 
         while (true)
         {
             Console.Write("\nI choose option number: ");
             ConsoleKeyInfo optNum = Console.ReadKey();
 
-            if (optNum.Key == ConsoleKey.D1)
+            if(paths.Count == 4)
             {
-                Biome = "Desert";
-            }
-            else if (optNum.Key == ConsoleKey.D2)
-            {
-                Biome = "Castle";
-            }
-            else if (optNum.Key == ConsoleKey.D3)
-            {
-                Biome = "Swamp";
-            }
-            else if (optNum.Key == ConsoleKey.D4)
-            {
-                Biome = "Mountains";
-            }
-            else
-            {
-                WriteColor("\nIncorrect input!", ConsoleColor.Red);
-                continue;
+                if (optNum.Key == ConsoleKey.D1)
+                {
+                    Biome = paths[0];
+                }
+                else if (optNum.Key == ConsoleKey.D2)
+                {
+                    Biome = paths[1];
+                }
+                else if (optNum.Key == ConsoleKey.D3)
+                {
+                    Biome = paths[2];
+                }
+                else if (optNum.Key == ConsoleKey.D4)
+                {
+                    Biome = paths[3];
+                }
+                else
+                {
+                    WriteColor("\nIncorrect input!", ConsoleColor.Red);
+                    continue;
+                }
             }
 
-            if (ConfirmInput())
+            else if (paths.Count == 3)
             {
+                if (optNum.Key == ConsoleKey.D1)
+                {
+                    Biome = paths[0];
+                }
+                else if (optNum.Key == ConsoleKey.D2)
+                {
+                    Biome = paths[1];
+                }
+                else if (optNum.Key == ConsoleKey.D3)
+                {
+                    Biome = paths[2];
+                }
+                else
+                {
+                    WriteColor("\nIncorrect input!", ConsoleColor.Red);
+                    continue;
+                }
+            }
+            else if (paths.Count == 2)
+            {
+                if (optNum.Key == ConsoleKey.D1)
+                {
+                    Biome = paths[0];
+                }
+                else if (optNum.Key == ConsoleKey.D2)
+                {
+                    Biome = paths[1];
+                }
+                else
+                {
+                    WriteColor("\nIncorrect input!", ConsoleColor.Red);
+                    continue;
+                }
+            }
+            else if (paths.Count == 1)
+            {
+                if (optNum.Key == ConsoleKey.D1)
+                {
+                    Biome = paths[0];
+                }
+                else
+                {
+                    WriteColor("\nIncorrect input!", ConsoleColor.Red);
+                    continue;
+                }
+            }
+            if (ConfirmInput())
+            {   
+                if(paths.Count > 1)
+                {
+                    if (Biome == "Desert")
+                    {
+                        isDesertUsed = true;
+                    }
+                    else if (Biome == "Castle")
+                    {
+                        isCastleUsed = true;
+                    }
+                    else if (Biome == "Swamp")
+                    {
+                        isSwampUsed = true;
+                    }
+                    else
+                    {
+                        isMountainsUsed = true;
+                    }
+                }
                 break;
             }
         }
     }
 
-    static bool ConfirmInput()
+    static bool ConfirmInput() // Potwierdzenie wyboru
     {
         while (true)
         {
@@ -268,8 +420,8 @@ class Player
         {
             case "hp":
             case "health":
-                maxHp += points;
-                Hp += points;
+                maxHp += points * 5;
+                Hp += points * 5;
                 break;
             case "str":
             case "strength":
@@ -336,15 +488,15 @@ class Player
         {
             LevelUp();
             currentExp -= expNeeded;
-            expNeeded = Convert.ToInt32(expNeeded * 1.6);
+            expNeeded = Convert.ToInt32(expNeeded * 1.8);
         }
     }
     public void LevelUp() // Level up
     {
         level++;
         Thread.Sleep(1000);
-        WriteColor($"\nLevel Up! You gain {Convert.ToInt32(level * 1.6)} points to assign.\n", ConsoleColor.DarkMagenta);
-        AvailableStatPoints += Convert.ToInt32(level * 1.6);
+        WriteColor($"\nLevel Up! You gain {Convert.ToInt32(level * 2.5)} points to assign.\n", ConsoleColor.DarkMagenta);
+        AvailableStatPoints += Convert.ToInt32(level * 2.5);
 
         while (AvailableStatPoints > 0)
         {
@@ -446,10 +598,10 @@ class Player
     private void Armor() // Tworzenie zbroi
     {
         Random rand = new Random();
-        ArmorHp = 1 + rand.Next(Convert.ToInt32(maxItemStat), Convert.ToInt32(maxItemStat * 5));
+        ArmorHp = (1 + rand.Next(Convert.ToInt32(maxItemStat), Convert.ToInt32(maxItemStat * 5))) * 5;
         ArmorStr = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), Convert.ToInt32(maxItemStat * 2));
 
-        Console.WriteLine($"New armor stats:");
+        Console.Write($"New armor stats:");
         DisplayItemStats(ArmorRarity, ArmorHp, ArmorStr, 0);
         DisplayEquippedItem(pastArmorRarity, pastArmorHp, pastArmorStr, 0, "armor");
         while (true)
@@ -483,9 +635,9 @@ class Player
     {
         Random rand = new Random();
         BootsSpd = 1 + rand.Next(Convert.ToInt32(maxItemStat), Convert.ToInt32(maxItemStat * 5));
-        BootsHp = 1 + rand.Next(Convert.ToInt32(maxItemStat / 2), Convert.ToInt32(maxItemStat * 2));
+        BootsHp = (1 + rand.Next(Convert.ToInt32(maxItemStat / 2), Convert.ToInt32(maxItemStat * 2))) * 5;
 
-        Console.WriteLine($"New boots stats:");
+        Console.Write($"New boots stats:");
         DisplayItemStats(BootsRarity, BootsHp, 0, BootsSpd);
         DisplayEquippedItem(pastBootsRarity, pastBootsHp, 0, pastBootsSpd, "boots");
         while (true)
@@ -523,6 +675,10 @@ class Player
         Spd += itemSpdIncrease;
 
         maxHp -= itemMaxHpDecrease;
+        if(maxHp > Hp)
+        {
+            Hp = maxHp;
+        }
         Str -= itemStrDecrease;
         Spd -= itemSpdDecrease;
     }
@@ -533,7 +689,7 @@ class Player
 
     static void DisplayItemStats(string rarity, int itemMaxHp, int itemStr, int itemSpd)
     {
-        Console.Write($"Rarity: "); DisplayRarity(rarity); Console.WriteLine($" | MaxHp: {itemMaxHp} | Str: {itemStr} | Spd: {itemSpd}");
+        Console.Write(" "); DisplayRarity(rarity); Console.WriteLine($" | MaxHp: {itemMaxHp} | Str: {itemStr} | Spd: {itemSpd}");
     }
 
     public string SetRarity()
@@ -567,7 +723,7 @@ class Player
         return Rarity;
     }
 
-    static void DisplayRarity(string rarity)
+    static void DisplayRarity(string rarity) // Rzadkości i ich kolory
     {
         switch (rarity)
         {
@@ -589,7 +745,7 @@ class Player
         }
     }
 
-    public void DisplayEquippedItem(string rarity, int itemMaxHp, int itemStr, int itemSpd, string itemType)
+    public void DisplayEquippedItem(string rarity, int itemMaxHp, int itemStr, int itemSpd, string itemType) // Wyświetlanie aktualnego przedmiotu
     {
         Console.Write($"\nEquipped {itemType} stats: ");
         if (rarity != "")
@@ -620,14 +776,14 @@ class Enemy // Tworzenie przeciwnika
 
     public string Name { get; private set; }
     private Random rand;
-    static void WriteColor(string message, ConsoleColor color = ConsoleColor.White)
+    static void WriteColor(string message, ConsoleColor color = ConsoleColor.White) // Wypisywanie kolorem
     {
         Console.ForegroundColor = color;
         Console.Write(message);
         Console.ResetColor();
     }
 
-    public Enemy(int hpRange, int strRange, int spdRange, int enemyNum, string biome) // Losowanie przeciwnikowi statystyk
+    public Enemy(int hpRange, int strRange, int spdRange, int enemyNum, string biome) // Losowanie przeciwnika i jego statystyk
     {
         string[] names = new string[5];
         switch (biome)
@@ -642,7 +798,7 @@ class Enemy // Tworzenie przeciwnika
                 names = ["Bog Witch", "Frogfolk", "Swamp Stalker", "Gnarled Root Goliath", "Bog Beast"];
                 break;
             case "Mountains":
-                names = ["Mountain Yeti", "Glacial Golem", "Frost Wraith", "Thunder Bear", "Deformed Ogre"];
+                names = ["Yeti", "Glacial Golem", "Frost Wraith", "Thunder Bird", "Deformed Ogre"];
                 break;
         }
         rand = new Random();
@@ -661,7 +817,7 @@ class Enemy // Tworzenie przeciwnika
                 Name = names[3];
                 break;
         }
-        Hp = GenerateStat(hpRange);
+        Hp = (GenerateStat(hpRange)) * 5;
         MaxHp = Hp;
         Str = GenerateStat(strRange);
         Spd = GenerateStat(spdRange);
@@ -669,14 +825,14 @@ class Enemy // Tworzenie przeciwnika
         WriteColor($"\n{Name} [lvl {enemyNum}] appears with {Hp} hp, {Str} str and {Spd} spd\n", ConsoleColor.Yellow);
     }
 
-    private int GenerateStat(int range)
+    private int GenerateStat(int range) // Zakres statystyk
     {
-        return rand.Next(Convert.ToInt32(range * 0.5), range * 2);
+        return rand.Next(range, Convert.ToInt32(range * 1.5));
     }
 
     public void TakeDamage(string playerUsername, int damage, float playerCritChance, float playerCritMutliplier) // Otrzymywanie obrażeń
     {
-        float damageTaken = rand.Next(Convert.ToInt32(0.9 * damage), Convert.ToInt32(1.1 * damage));
+        float damageTaken = rand.Next(damage, Convert.ToInt32(1.1 * damage));
         if (rand.Next(1, 100) <= playerCritChance)
         {
             Convert.ToInt32(damageTaken *= playerCritMutliplier);
@@ -712,7 +868,7 @@ class Boss // Tworzenie przeciwnika
         Console.ResetColor();
     }
 
-    public Boss(int hpRange, int strRange, int spdRange, int enemyNum, string biome) // Losowanie przeciwnikowi statystyk
+    public Boss(int hpRange, int strRange, int spdRange, int enemyNum, string biome) // Losowanie Bossa
     {
         string[] names = new string[5];
         switch (biome)
@@ -731,7 +887,7 @@ class Boss // Tworzenie przeciwnika
                 break;
         }
         rand = new Random();
-        Hp = GenerateStat(hpRange);
+        Hp = (GenerateStat(hpRange)) * 8;
         MaxHp = Hp;
         Str = GenerateStat(strRange);
         Spd = GenerateStat(spdRange);
@@ -739,12 +895,12 @@ class Boss // Tworzenie przeciwnika
         WriteColor($"\n{Name} [lvl {enemyNum}] appears with {Hp} hp, {Str} str and {Spd} spd\n", ConsoleColor.Red);
     }
 
-    private int GenerateStat(int range)
+    private int GenerateStat(int range) // Zakres Statystyk Bossa
     {
-        return rand.Next(Convert.ToInt32(range * 0.8), range * 4);
+        return rand.Next(range, range * 3);
     }
 
-    public void TakeDamage(string playerUsername, int damage, float playerCritChance, float playerCritMutliplier) // Otrzymywanie obrażeń
+    public void TakeDamage(string playerUsername, int damage, float playerCritChance, float playerCritMutliplier) // Walka
     {
         float damageTaken = rand.Next(Convert.ToInt32(0.9 * damage), Convert.ToInt32(1.1 * damage));
         if (rand.Next(1, 100) <= playerCritChance)
