@@ -11,21 +11,21 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
   - mag ma największą siłę, ale podobnie jak rycerz ma najmniejszą szybkość;
   - łucznik jest najszybszy, ale ma najmniej punktów zdrowia,
     - punkty zdrowia determinują to, ile obrażeń gracz może przyjąć zanim umrze;
-    - siła oznacza jak dużo punktów zdrowia bohater zabierze przeciwnikowi. Zadane obrażenia przeciwnikowi mogą zostać zwiększone jednorazowo przez trafienie obrażeń krytycznych. Szansa na ich uzyskanie wynosi 12,5%;
+    - siła oznacza jak dużo punktów zdrowia bohater zabierze przeciwnikowi. Zadane przeciwnikowi obrażenia mogą zostać zwiększone poprzez trafienie obrażeń krytycznych. Szansa na trafienie krytyczne wynosi 12,5%;
     -  od szybkości zależy, która z postaci - bohater czy wróg - zaatakuje pierwsza,
 - Po wybraniu klasy bohatera, gracz wybiera jedną z czterech dróg:
   - pustynia;
   - zamek;
   - bagna;
   - góry,
-- Po wyborze ścieżki rozpoczyna się właściwa rozgrywka - walka z przeciwnikami, którzy mają losowe statystyki, adekwatne do poziomu gracza.
+- Po wyborze ścieżki rozpoczyna się właściwa rozgrywka - walka z przeciwnikami, którzy mają losowe statystyki, których zakres zwiększa się z każdym pokonanym przeciwnikiem.
 - Gra kończy się, gdy gracz zostanie pokonany przez przeciwnika;
 - Po porażce można zagrać kolejny raz.
 
 ## 3. Opis funkcji i funkcjonalności
-- Po pokonaniu przeciwnika gracz otrzymuje punkty doświadczenia, których liczba jest średnią statystyk przeciwnika;
+- Po pokonaniu przeciwnika gracz otrzymuje punkty doświadczenia, których liczba jest średnią statystyk przeciwnika z kawałkiem losowości;
 - Po osiągnięciu wymaganej ilości punktów doświadczenia, poziom bohatera zostaje zwiększony, podobnie jak ilość punktów doświadczenia wymagana do kolejnego poziomu;
-- Po zwiększeniu poziomu bohatera, gracz otrzymuje punkty, za które może ulepszyć swoje statystyki. Liczba tych punktów jest równa iloczynowi poziomu bohatera i liczby 1.6;
+- Po zwiększeniu poziomu bohatera, gracz otrzymuje punkty, dzięki którym może ulepszyć swoje statystyki. Liczba tych punktów jest równa iloczynowi poziomu bohatera i liczby 1.6;
 - W grze są dostępne 3 rodzaje przedmiotów, które zwiększają bohaterowi statystyki:
   - broń, która zwiększa ilość zadawanych obrażeń i szybkość, ale nie zwiększa maksymalnej ilości punktów zdrowia;
   - zbroja, która zwiększa maksymalną liczbę punktów zdrowia i ilość zadawanych obrażeń, ale nie zwiększa szybkości;
@@ -51,7 +51,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - Podczas pobierania Visual Studio pobierz aplikacje konsoli c#
 - Po pobraniu Visual Studio pobierz plik PABLO MUSHROOMS i uruchom go w programie
 ## 5. Dokumentacja kodu
-- istnieje
+- istnieje(chyba)
 ## 6. Przykłady użycia
 - Przykładowy scenariusz testowy:
 
@@ -188,14 +188,10 @@ Would you like to play again? y/n: n
 Po wybraniu opcji n następuje koniec gry. W razie wybrania opcji y, rozgrywka rozpoczyna się na nowo.
 
 ## 7. Błędy i ich obsługa
-- W przypadku wpisania innej wartości od Y w pytaniach y/n program uznaje odpowiedź za N;
 - Przy wyborze klasy i drogi w przypadku wybrania złej wartosci program powtarza wybór;
 - W przypisywaniu statystyk po wyborze nie poprawnej statystyki lub zbyt dużej wartości program powtarza wybór;
 ## 8.Wnioski i przyszłe usprawnienia
 - Elementy do przyszłej poprawy;
-  - nazwy przeciwników;
-  - walka z bosami;
   - statystyki;
   - przedmioty;
   - sklep z przedmiotami;
-  - zmiana otoczenia;
