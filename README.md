@@ -194,8 +194,13 @@ Po wybraniu opcji n następuje koniec gry. W razie wybrania opcji y, rozgrywka r
 ## 7. Błędy i ich obsługa
 - Przy wyborze klasy i drogi w przypadku wybrania złej wartosci program powtarza wybór;
 - W przypisywaniu statystyk po wyborze nie poprawnej statystyki lub zbyt dużej wartości program powtarza wybór;
+  
 ## 8.Wnioski i przyszłe usprawnienia
 - Elementy do przyszłej poprawy i rozbudowy:
   - statystyki;
   - przedmioty;
-  - sklep z przedmiotami;
+  - sklep z przedmiotami,
+- Wnioski z pracy nad projektem:
+  - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
+  - napotkane zostały także pewne trudności:
+    - nieprzemyślane pisanie kodu, a przez to trudności z modyfikacją i rozbudową gry w późniejszym czasie.
