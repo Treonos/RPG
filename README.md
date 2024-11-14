@@ -47,10 +47,11 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - Po zakończeniu walki z przeciwnikiem gracz może wyświetlić swój ekwipunek;
 - Po zakończeniu walki z przeciwnikiem gracz leczy się 75% maksymalnej ilości życia;
 ## 4. Instrukcja instalacji i uruchomienia
-- Instalacja Visual Studio i uruchomienie gry:
-  - pobierz program Visual Studio https://visualstudio.microsoft.com/pl/;
-  - podczas pobierania Visual Studio pobierz aplikacje konsoli C#;
-  - po pobraniu Visual Studio pobierz plik PABLO MUSHROOMS i uruchom go w programie,
+- Instalacja Microsoft Visual Studio i uruchomienie gry:
+  - pobierz program Microsoft Visual Studio https://visualstudio.microsoft.com/pl/;
+  - podczas pobierania Microsoft Visual Studio pobierz aplikacje konsoli C#;
+  - po pobraniu Microsoft Visual Studio pobierz plik Program.cs z najnowszą datą;
+  - otwórz plik w notatniku skopiuj kod oraz wklej do nowego projektu
 - Wymagania systemowe i programowe:
   - gra kompatybilna jest z systemem operacyjnym Windows (10 i 11);
   - wersja .NET: 8.0.
@@ -58,7 +59,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 ## 5. Dokumentacja kodu
 - Klasa PLayer - jedna z trzech klas w kodzie gry, dzięki której możliwe jest uruchomienie i poprawne działanie gry. Zawarte w klasie metody odpowiadają za wybór klasy bohatera, stworzenie jego ekwipunku, przyjęcie wyboru biomu, na który chce iść gracz i przydzielanie punktów doświadczenia oraz zwiększanie statystyk gracza po osiągnięciu kolejnego poziomu. Jej konstruktor o tej samej nazwie wyświetla kreator postaci i odpowiada za zapisanie imienia gracza.
 - Klasa Enemy - kolejna z trzech klas w kodzie gry, dzięki której możliwe jest poprawne działanie gry. Jej konstruktor o tej samej nazwie rozpoczyna tworzenie przeciwnika i losuje mu imię na podstawie biomu wybranego wcześniej przez gracza. Metody tej klasy pozwalają na generowanie statystyk przeciwnika i odbieranie mu punktów zdrowia po ataku gracza.
-- Klasa Boss - ostatnia z trzech klas w kodzie gry, która sprawia, że raz na 10 przeciwników jednorazowo zwiększany będzie znacznie poziom trudności poprzez utworzenie bossa. Zasada działania tej klasy jest podobna do działania klasy Enemy opisanej powyżej. Dwoma różnicami tej klasy od klasy Enemy są inne imiona przeciwników (tutaj: bossów) oraz zwiększone statystyki przeciwnika.
+- Klasa Boss - ostatnia z trzech klas w kodzie gry, której obiekt tworzony jest raz na 10 przeciwników. Jednorazowo zwiększany będzie znacznie poziom trudności poprzez utworzenie bossa. Zasada działania tej klasy jest podobna do działania klasy Enemy opisanej powyżej. Dwoma różnicami tej klasy od klasy Enemy są inne imiona przeciwników (tutaj: bossów) oraz zwiększone statystyki przeciwnika.
   
 ## 6. Przykłady użycia
 - Przykładowy scenariusz testowy:
@@ -207,4 +208,4 @@ Po wybraniu opcji n następuje koniec gry. W razie wybrania opcji y, rozgrywka r
 - Wnioski z pracy nad projektem:
   - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
   - napotkane zostały także pewne trudności:
-    - nieprzemyślane pisanie kodu, a przez to trudności z modyfikacją i rozbudową gry w późniejszym czasie.
+  - nieprzemyślane pisanie kodu, a przez to trudności z modyfikacją i rozbudową gry w późniejszym czasie.
