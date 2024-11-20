@@ -47,7 +47,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - Po zakończeniu walki z przeciwnikiem gracz może wyświetlić swój ekwipunek;
 - Po zakończeniu walki z przeciwnikiem gracz leczy się 75% maksymalnej ilości życia;
 - Jak grać:
-  - Wystarczy wpisywać w konsoli to, o co poprosi gra, wyświetlając odpowiednie komunikaty w konsoli,
+  - Wystarczy wpisywać to, o co poprosi gra, wyświetlając odpowiednie komunikaty w oknie konsoli,
   - Istnieje obsługa błędów opisana w punkcie 7 dokumentacji, która zadziała, gdy gracz poda złe wartości.
 
 ## 4. Instrukcja instalacji i uruchomienia
