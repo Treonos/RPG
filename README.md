@@ -192,12 +192,8 @@ You take 11 damage, your health: 0/10
 
 GAME OVER!
 
-Would you like to play again? y/n: n
-
-Po wybraniu opcji n następuje koniec gry. W razie wybrania opcji y, rozgrywka rozpoczyna się na nowo.
-
 ## 7. Błędy i ich obsługa
-- Przy wyborze klasy i drogi w przypadku wybrania złej wartosci program powtarza wybór;
+- Przy wyborze klasy i drogi w przypadku wybrania złej wartości program powtarza wybór;
 - W przypisywaniu statystyk po wyborze nie poprawnej statystyki lub zbyt dużej wartości program powtarza wybór;
   
 ## 8.Wnioski i przyszłe usprawnienia
