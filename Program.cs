@@ -753,7 +753,7 @@ class Player
             case "Legendary":
                 WriteColor($"{rarity}", ConsoleColor.Yellow);
                 break;
-            case "Skibidi":
+            case "Divine":
                 WriteColor($"{rarity}", ConsoleColor.Cyan);
                 break;
         }
