@@ -1,0 +1,66 @@
+public string SetRarity()
+{
+    Random rand = new Random();
+    int rarityNum = rand.Next(1, 100);
+    string Rarity = "";
+    switch (rarityNum) // Losowanie rzadkości przedmiotu
+    {
+        case var _ when rarityNum >= 51:
+            Rarity = "Common";
+            maxItemStat = Convert.ToInt32(level * 1.5);
+            break;
+        case var _ when rarityNum >= 26:
+            Rarity = "Uncommon";
+            maxItemStat = Convert.ToInt32(level * 2);
+            break;
+        case var _ when rarityNum >= 14:
+            Rarity = "Rare";
+            maxItemStat = Convert.ToInt32(level * 3);
+            break;
+        case var _ when rarityNum >= 7:
+            Rarity = "Epic";
+            maxItemStat = Convert.ToInt32(level * 6);
+            break;
+        case var _ when rarityNum >= 4:
+            Rarity = "Mythical";
+            maxItemStat = Convert.ToInt32(level * 10);
+            break;
+        case var _ when rarityNum >= 2:
+            Rarity = "Legendary";
+            maxItemStat = Convert.ToInt32(level * 15);
+            break;
+        case var _ when rarityNum >= 1:
+            Rarity = "Skibidi";
+            maxItemStat = Convert.ToInt32(level * 20);
+            break;
+    }
+    return Rarity;
+}
+
+static void DisplayRarity(string rarity) // Rzadkości i ich kolory
+{
+    switch (rarity)
+    {
+        case "Common":
+            WriteColor($"{rarity}", ConsoleColor.DarkGray);
+            break;
+        case "Uncommon":
+            WriteColor($"{rarity}", ConsoleColor.DarkGreen);
+            break;
+        case "Rare":
+            WriteColor($"{rarity}", ConsoleColor.Blue);
+            break;
+        case "Epic":
+            WriteColor($"{rarity}", ConsoleColor.Magenta);
+            break;
+        case "Mythical":
+            WriteColor($"{rarity}", ConsoleColor.DarkRed);
+            break;
+        case "Legendary":
+            WriteColor($"{rarity}", ConsoleColor.Yellow);
+            break;
+        case "Skibidi":
+            WriteColor($"{rarity}", ConsoleColor.Cyan);
+            break;
+    }
+}
