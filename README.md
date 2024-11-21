@@ -1,5 +1,5 @@
 # "PABLO MUSHROOMS"
-Matalowe płuca:
+Metalowe płuca:
 KK11, FG6, SK10, PB3
 ## 1. OPIS PROJEKTU
 Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie rozrywki graczowi.
