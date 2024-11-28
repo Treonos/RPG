@@ -34,19 +34,25 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 - Przedmioty mają rzadkość i szanse na trafienie danej rzadkości:
   - zwykła, 50%;
   - niezwykła, 25%;
-  - rzadka, 15%;
+  - rzadka, 12%;
   - epicka, 7%;
-  - mityczna, 3%.
-- Zwiększanie odpowiednich dla danego przedmiotu statystyk bohatera zależy od rzadkości przedmiotu:
-  - zwykła zwiększa statystyki o iloczyn poziomu bohatera i liczby 1.5;
-  - niezwykła zwiększa statystyki o iloczyn poziomu bohatera i liczby 2;
-  - rzadka zwiększa statystyki o iloczyn poziomu bohatera i liczby 3;
-  - epicka zwiększa statystyki o iloczyn poziomu bohatera i liczby 6;
-  - mityczna zwiększa statystyki o iloczyn poziomu bohatera i liczby 15,
+  - mityczna, 3%;
+  - legendarna, 2%;
+  - boska, 1%.
+- Zwiększanie odpowiednich dla danego przedmiotu statystyk bohatera zależy od iloczynu poziomu bohatera i stałej liczby przypisanej do rzadkości przedmiotu:
+  - dla zwykłej stała wynosi 1,5;
+  - dla niezwykłej 2;
+  - dla rzadkiej 3;
+  - dla epickiej 6;
+  - dla mitycznej 10;
+  - dla legendarnej 15;
+  - dla boskiej 25.
 - Po wybraniu klasy bohatera i po założeniu przedmiotu wyświetlane są statystyki postaci;
 - Po zdobyciu nowego przedmiotu wyświetlane jest porównanie nowego przedmiotu i starego, jeśli gracz go posiadał;
 - Po zakończeniu walki z przeciwnikiem gracz może wyświetlić swój ekwipunek;
 - Po zakończeniu walki z przeciwnikiem gracz leczy się 75% maksymalnej ilości życia;
+- Imię bohatera, jego poziom, klasa oraz biom, które wybrał, a także zdobyte jak i wymagane do kolejnego poziomu punkty doświadczenia, przedmioty oraz obecne statystyki bohatera (obecne i maksymalne punkty zdrowia, siła i szybkość) są zapisywane do pliku.
+  
 - Jak grać:
   - Wystarczy wpisywać to, o co poprosi gra, wyświetlając odpowiednie komunikaty w oknie konsoli,
   - Istnieje obsługa błędów opisana w punkcie 7 dokumentacji, która zadziała, gdy gracz poda złe wartości.
