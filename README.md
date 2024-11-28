@@ -63,7 +63,7 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
 
 ## 5. Dokumentacja kodu
 - Klasa Player - jedna z dwóch klas w kodzie gry, dzięki której możliwe jest uruchomienie i poprawne działanie gry. Zawarte w klasie metody odpowiadają za wybór klasy bohatera, stworzenie jego ekwipunku, przyjęcie wyboru biomu, na który chce iść gracz i przydzielanie punktów doświadczenia oraz zwiększanie statystyk gracza po osiągnięciu kolejnego poziomu. Jej konstruktor o tej samej nazwie wyświetla kreator postaci i odpowiada za zapisanie imienia gracza.
-- Klasa Enemy - ostatnia z dwóch klas w kodzie gry, dzięki której możliwe jest poprawne działanie gry. Jej konstruktor o tej samej nazwie rozpoczyna tworzenie przeciwnika i losuje mu imię na podstawie biomu wybranego wcześniej przez gracza. Metody tej klasy pozwalają na generowanie statystyk przeciwnika i odbieranie mu punktów zdrowia po ataku gracza. 10 przeciwnik będzie bossem. Oznacza to, że zostanie mu przypisane unikatowe imię dla bossa na podstawie wybranego biomu. Statystyki bossa będą znacznie wyższe niż skibidi zwykłych przeciwników.
+- Klasa Enemy - ostatnia z dwóch klas w kodzie gry, dzięki której możliwe jest poprawne działanie gry. Jej konstruktor o tej samej nazwie rozpoczyna tworzenie przeciwnika i losuje mu imię na podstawie biomu wybranego wcześniej przez gracza. Metody tej klasy pozwalają na generowanie statystyk przeciwnika i odbieranie mu punktów zdrowia po ataku gracza. 10 przeciwnik będzie bossem. Oznacza to, że zostanie mu przypisane unikatowe imię dla bossa na podstawie wybranego biomu. Statystyki bossa będą znacznie wyższe niż zwykłych przeciwników.
   
 ## 6. Przykłady użycia
 - Przykładowy scenariusz testowy:
