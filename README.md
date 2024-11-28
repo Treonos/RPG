@@ -62,9 +62,8 @@ Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie r
   - wersja .NET: 8.0.
 
 ## 5. Dokumentacja kodu
-- Klasa Player - jedna z trzech klas w kodzie gry, dzięki której możliwe jest uruchomienie i poprawne działanie gry. Zawarte w klasie metody odpowiadają za wybór klasy bohatera, stworzenie jego ekwipunku, przyjęcie wyboru biomu, na który chce iść gracz i przydzielanie punktów doświadczenia oraz zwiększanie statystyk gracza po osiągnięciu kolejnego poziomu. Jej konstruktor o tej samej nazwie wyświetla kreator postaci i odpowiada za zapisanie imienia gracza.
-- Klasa Enemy - kolejna z trzech klas w kodzie gry, dzięki której możliwe jest poprawne działanie gry. Jej konstruktor o tej samej nazwie rozpoczyna tworzenie przeciwnika i losuje mu imię na podstawie biomu wybranego wcześniej przez gracza. Metody tej klasy pozwalają na generowanie statystyk przeciwnika i odbieranie mu punktów zdrowia po ataku gracza.
-- Klasa Boss - ostatnia z trzech klas w kodzie gry, której obiekt tworzony jest raz na 10 przeciwników. Jednorazowo zwiększany będzie znacznie poziom trudności poprzez utworzenie bossa. Zasada działania tej klasy jest podobna do działania klasy Enemy opisanej powyżej. Dwoma różnicami tej klasy od klasy Enemy są inne imiona przeciwników (tutaj: bossów) oraz zwiększone statystyki przeciwnika.
+- Klasa Player - jedna z dwóch klas w kodzie gry, dzięki której możliwe jest uruchomienie i poprawne działanie gry. Zawarte w klasie metody odpowiadają za wybór klasy bohatera, stworzenie jego ekwipunku, przyjęcie wyboru biomu, na który chce iść gracz i przydzielanie punktów doświadczenia oraz zwiększanie statystyk gracza po osiągnięciu kolejnego poziomu. Jej konstruktor o tej samej nazwie wyświetla kreator postaci i odpowiada za zapisanie imienia gracza.
+- Klasa Enemy - ostatnia z dwóch klas w kodzie gry, dzięki której możliwe jest poprawne działanie gry. Jej konstruktor o tej samej nazwie rozpoczyna tworzenie przeciwnika i losuje mu imię na podstawie biomu wybranego wcześniej przez gracza. Metody tej klasy pozwalają na generowanie statystyk przeciwnika i odbieranie mu punktów zdrowia po ataku gracza.
   
 ## 6. Przykłady użycia
 - Przykładowy scenariusz testowy:
