@@ -1,0 +1,1 @@
+SELECT skibidi FROM toilet WHERE brainrot = TRUE;
