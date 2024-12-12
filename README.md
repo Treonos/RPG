@@ -211,7 +211,6 @@ GAME OVER!
   - statystyki;
   - przedmioty;
   - sklep z przedmiotami;
-  - poprawa systemu zakończenia rozgrywki,
 - Wnioski z pracy nad projektem:
   - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
   - napotkane zostały także pewne trudności:
