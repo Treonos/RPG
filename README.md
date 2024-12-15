@@ -208,9 +208,9 @@ GAME OVER!
   
 ## 8.Wnioski i przyszłe usprawnienia
 - Elementy do przyszłej poprawy i rozbudowy:
-  - statystyki;
-  - przedmioty;
-  - sklep z przedmiotami;
+  - zbalansowanie progresji gracza, m.in. przez dodanie różnych poziomów trudności,​;
+  - zbalansowanie zwiększania statystyk gracza przez przedmioty oraz dodanie dodatkowych umiejętności pasywnych dla rzadszych broni i broni z bossów;
+  - dodanie waluty i sklepu, w którym za zgromadzone pieniądze można będzie można nabywać przedmioty;
 - Wnioski z pracy nad projektem:
   - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
   - napotkane zostały także pewne trudności:
