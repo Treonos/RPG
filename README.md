@@ -207,11 +207,12 @@ GAME OVER!
 - W przypisywaniu statystyk po wyborze nie poprawnej statystyki lub zbyt dużej wartości program powtarza wybór;
   
 ## 8.Wnioski i przyszłe usprawnienia
+- Wnioski z pracy nad projektem:
+  - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
+  - ddało się napisać prosty i czytelny kod oraz stworzyć interesującą i podatną na rozbudowę fabułę​;
+  - napotkane zostały także pewne trudności:
+    - nieprzemyślane pisanie kodu, a przez to trudności z modyfikacją i rozbudową gry w późniejszym czasie.
 - Elementy do przyszłej poprawy i rozbudowy:
   - zbalansowanie progresji gracza, m.in. przez dodanie różnych poziomów trudności,​;
   - zbalansowanie zwiększania statystyk gracza przez przedmioty oraz dodanie dodatkowych umiejętności pasywnych dla rzadszych broni i broni z bossów;
   - dodanie waluty i sklepu, w którym za zgromadzone pieniądze można będzie można nabywać przedmioty;
-- Wnioski z pracy nad projektem:
-  - dobrze działała komunikacja w grupie, dzięki czemu możliwe było sprawne napisanie gry i ograniczenie błędów w kompilacji do minimum;
-  - napotkane zostały także pewne trudności:
-  - nieprzemyślane pisanie kodu, a przez to trudności z modyfikacją i rozbudową gry w późniejszym czasie.
