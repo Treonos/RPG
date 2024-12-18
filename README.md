@@ -5,7 +5,7 @@ KK11, FG6, SK10, PB3
 Aplikacja "Pablo Mushrooms" to gra tekstowa RPG, która ma na celu zapewnienie rozrywki graczowi.
 
 ## 2. Architektura aplikacji
-
+![Pusty diagram(1)](https://github.com/user-attachments/assets/1d08ad24-1c68-497c-b3f2-381264c04bf1)
 
 - Na początku rozgrywki gracz wpisuje imię dla swojej postaci oraz jedną z trzech dostępnych klas: rycerza, maga lub łucznika. Bohater ma 3 statystyki (punkty zdrowia, siła, szybkość), których wartość podstawowa zależy od wybranej klasy:
   - rycerz ma najwięcej punktów zdrowia, a najmniej szybkości;
