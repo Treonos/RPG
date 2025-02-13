@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RPG.SelectedSavePage"
+             Title=""
+             BackgroundColor="Black">
+    <HorizontalStackLayout
+        Margin="20"
+Spacing="40"
+VerticalOptions="Center"
+    HorizontalOptions="Center">
+        
+        <Button Text="new run"
+HorizontalOptions="Center" 
+                HeightRequest="250"
+WidthRequest="250"
+FontSize="Medium"/>
+
+        <Button Text="load run"
+HorizontalOptions="Center" 
+                HeightRequest="250"
+WidthRequest="250"
+FontSize="Medium"/>
+
+    </HorizontalStackLayout>
+</ContentPage>
