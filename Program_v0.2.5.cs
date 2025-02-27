@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq.Expressions;
 using System.Security.Principal;
@@ -57,7 +57,7 @@ class Program
                         BattleWon(player, enemy);
                         break;
                     }
-                    if(player.Hp <= 0)
+                    if (player.Hp <= 0)
                     {
                         BattleLost();
                     }
@@ -68,7 +68,7 @@ class Program
     public static void BattleWon(Player player, Enemy enemy)
     {
         enemyStatRange += (int)(enemyNum * 0.2) + 2; // Zwiększenie zakresu statystyk przeciwnika
-        
+
         Thread.Sleep(600);
         if (!(enemyNum % 10 == 0))
             Console.WriteLine("You defeated the enemy!\n");
@@ -78,9 +78,13 @@ class Program
         player.Heal(); // Leczenie gracza
         int expGained = (int)(0.33 * (enemy.MaxHp + enemy.Str + enemy.Spd));
         player.GainExp(expGained);
-        if (!(enemyNum % 10 == 0) && enemyNum % 3 == 0)
+        if (!(enemyNum % 10 == 0))
         {
-             player.GetItem();
+            Random rand = new();
+            if (rand.Next(1, 5) == 1)
+            {
+                player.GetItem();
+            }
         }
         else if (enemyNum % 10 == 0 && enemyNum != 40)
         {
@@ -90,7 +94,7 @@ class Program
         {
             Console.Write("\nPress Enter to continue or press I to view your inventory ");
             input = Console.ReadKey();
-            if (input.Key == ConsoleKey.Enter) 
+            if (input.Key == ConsoleKey.Enter)
             {
                 if (player.currentExp >= player.expNeeded) player.LevelUp();
                 Console.Clear();
@@ -257,7 +261,7 @@ class Player
 
             if (optNum.Key == ConsoleKey.D1)
             {
-                Class = "Knigth";  MaxHp = 60; Str = 16; Spd = 7;
+                Class = "Knigth"; MaxHp = 60; Str = 16; Spd = 7;
             }
             else if (optNum.Key == ConsoleKey.D2)
             {
@@ -388,7 +392,7 @@ class Player
                     continue;
                 }
             }
-            if (ConfirmInput() && paths.Count > 1)
+            if (ConfirmInput() && paths.Count >= 1)
             {
                 if (Biome == "Desert")
                 {
@@ -503,7 +507,7 @@ class Player
                 try
                 {
                     points = Convert.ToInt32(Console.ReadLine());
-                    
+
                 }
                 catch (FormatException)
                 {
@@ -577,7 +581,7 @@ class Player
     private void Weapon() // Tworzenie broni
     {
         Random rand = new();
-        WeaponStr = 1 + rand.Next(maxItemStat, maxItemStat * 5);
+        WeaponStr = 1 + rand.Next(maxItemStat, maxItemStat * 4);
         WeaponSpd = 1 + (int)rand.Next(maxItemStat / 2, maxItemStat * 2);
 
         Console.Write($"New weapon stats:");
@@ -614,7 +618,7 @@ class Player
     private void Armor() // Tworzenie zbroi
     {
         Random rand = new();
-        ArmorHp = (int)(1 + rand.Next(maxItemStat, maxItemStat * 5)) * 3;
+        ArmorHp = (int)(1 + rand.Next(maxItemStat, maxItemStat * 4)) * 3;
         ArmorStr = 1 + (int)rand.Next(maxItemStat / 2, maxItemStat * 2);
 
         Console.Write($"New armor stats:");
@@ -650,7 +654,7 @@ class Player
     private void Boots() // Tworzenie butów
     {
         Random rand = new();
-        BootsSpd = 1 + rand.Next(maxItemStat, maxItemStat * 5);
+        BootsSpd = 1 + rand.Next(maxItemStat, maxItemStat * 4);
         BootsHp = (1 + rand.Next((int)(maxItemStat / 2), maxItemStat * 2)) * 3;
 
         Console.Write($"New boots stats:");
@@ -721,27 +725,27 @@ class Player
                 break;
             case var _ when rarityNum >= 26:
                 Rarity = "Uncommon";
-                maxItemStat = (int)(Level * Level * 0.7) + 1;
+                maxItemStat = (int)(Level * Level * 0.7) + 7;
                 break;
             case var _ when rarityNum >= 14:
                 Rarity = "Rare";
-                maxItemStat = (int)(Level * Level * 0.9) + 1;
+                maxItemStat = (int)(Level * Level * 0.9) + 20;
                 break;
             case var _ when rarityNum >= 7:
                 Rarity = "Epic";
-                maxItemStat = (int)(Level * Level * 1.1);
+                maxItemStat = (int)(Level * Level * 1.1) + 45;
                 break;
             case var _ when rarityNum >= 4:
                 Rarity = "Mythical";
-                maxItemStat = (int)(Level * Level * 1.3);
+                maxItemStat = (int)(Level * Level * 1.3) + 70;
                 break;
             case var _ when rarityNum >= 2:
                 Rarity = "Legendary";
-                maxItemStat = (int)(Level * Level * 1.6);
+                maxItemStat = (int)(Level * Level * 1.6) + 100;
                 break;
             case var _ when rarityNum >= 1:
                 Rarity = "Divine";
-                maxItemStat = (int)(Level * Level * 2);
+                maxItemStat = (int)(Level * Level * 2) + 500;
                 break;
         }
         return Rarity;
@@ -848,7 +852,7 @@ class Enemy // Tworzenie przeciwnika
 
             WriteColor($"{Name} [lvl {enemyNum}] appears with {Hp} hp, {Str} str and {Spd} spd\n", ConsoleColor.Yellow);
         }
-        else if(enemyNum % 10 == 0 && enemyNum % 40 != 0)
+        else if (enemyNum % 10 == 0 && enemyNum % 40 != 0)
         {
             switch (biome)
             {
@@ -875,12 +879,14 @@ class Enemy // Tworzenie przeciwnika
         }
         else
         {
-            Name = "Final Boss Pablo";
+            Name = "FINAL BOSS PABLO";
             rand = new();
-            Hp = (GenerateStat(enemyStatRange)) * 20;
+            Hp = (GenerateStat(enemyStatRange)) * 10;
             MaxHp = Hp;
-            Str = GenerateStat(enemyStatRange) * 5;
-            Spd = GenerateStat(enemyStatRange) * 5;
+            Str = GenerateStat(enemyStatRange) * 4;
+            Spd = GenerateStat(enemyStatRange) * 4;
+
+            WriteColor($"{Name} [LVL ???] APPEARS WITH {Hp} HP, {Str} STR AND {Spd} SPD!!!\n", ConsoleColor.Red);
         }
     }
 
