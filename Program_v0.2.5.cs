@@ -81,7 +81,7 @@ class Program
         if (!(enemyNum % 10 == 0))
         {
             Random rand = new();
-            if (rand.Next(1, 5) == 1)
+            if (rand.Next(1, 4) == 1)
             {
                 player.GetItem();
             }
