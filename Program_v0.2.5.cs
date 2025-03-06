@@ -881,10 +881,10 @@ class Enemy // Tworzenie przeciwnika
         {
             Name = "FINAL BOSS PABLO";
             rand = new();
-            Hp = (GenerateStat(enemyStatRange)) * 10;
+            Hp = (GenerateStat(enemyStatRange)) * 8;
             MaxHp = Hp;
-            Str = GenerateStat(enemyStatRange) * 4;
-            Spd = GenerateStat(enemyStatRange) * 4;
+            Str = GenerateStat(enemyStatRange) * 3;
+            Spd = GenerateStat(enemyStatRange) * 3;
 
             WriteColor($"{Name} [LVL ???] APPEARS WITH {Hp} HP, {Str} STR AND {Spd} SPD!!!\n", ConsoleColor.Red);
         }
