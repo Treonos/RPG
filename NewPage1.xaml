@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RPG.NewPage1"
+             x:Name="strona">
+    <AbsoluteLayout>
+        <Image
+            Source="mage1.png"
+            x:Name="player"
+            HeightRequest="220"
+            WidthRequest="200"
+            Aspect="AspectFit"
+            AbsoluteLayout.LayoutBounds="10, 500"/>
+        <Label
+            Text="HP"
+            FontSize="30"
+            AbsoluteLayout.LayoutBounds="30, 60"/>
+        <ProgressBar
+            Progress="1"
+            x:Name="playerHp"
+            ProgressColor="Green"
+            BackgroundColor="Black"
+            AbsoluteLayout.LayoutBounds="100, 80"
+            WidthRequest="200"/>
+        <Label
+            Text="SP"
+            FontSize="30"
+            AbsoluteLayout.LayoutBounds="30, 95"/>  
+        <ProgressBar
+            Progress="1"
+            x:Name="playerSp"
+            ProgressColor="Yellow"
+            BackgroundColor="Black"
+            AbsoluteLayout.LayoutBounds="100, 120"
+            WidthRequest="200"/>
+        <Label
+            Text=""
+            TextColor="Black"
+            x:Name="nick"
+            FontSize="30"
+            AbsoluteLayout.LayoutBounds="30, 20"
+            FontAttributes="Bold"/>
+        <Image
+            Source="player.png"
+            x:Name="enemy"
+            HeightRequest="250"
+            WidthRequest="200"
+            Aspect="AspectFit"
+            AbsoluteLayout.LayoutBounds="1200, 500"/>
+        <Label
+            Text="enemy"
+            TextColor="Black"
+            x:Name="enemyName"
+            FontSize="30"
+            AbsoluteLayout.LayoutBounds="1300, 20"
+            FontAttributes="Bold"/>
+        <ProgressBar 
+            Progress="1"
+            x:Name="enemyHp"
+            ProgressColor="Green"
+            BackgroundColor="Black"
+            AbsoluteLayout.LayoutBounds="1130, 80"
+            WidthRequest="200"/>
+        <Label
+            Text="HP"
+            FontSize="30"
+            AbsoluteLayout.LayoutBounds="1360, 60"/>
+        <Button
+            Text="Attack"
+            AbsoluteLayout.LayoutBounds="650, 700"
+            WidthRequest="100"
+            Clicked="Attack"
+            />
+    </AbsoluteLayout>
+</ContentPage>
