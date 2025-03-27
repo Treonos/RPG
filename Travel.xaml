@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RPG.Travel"
+             BackgroundColor="Black">
+    <VerticalStackLayout
+        Margin="20"
+        Spacing="40"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+
+        <Label Text="Choose your destination"
+TextColor="White"
+HorizontalOptions="Center"
+FontSize="Header"/>
+        <VerticalStackLayout
+            BackgroundColor="White">
+
+            <RadioButton x:Name="b1" Margin="5"
+                TextColor="Black"
+                GroupName="Biome"
+                Content="Desert" />
+
+            <RadioButton x:Name="b2" Margin="5"
+                TextColor="Black"
+                GroupName="Biome"
+                Content="Mountains" />
+
+            <RadioButton x:Name="b3" Margin="5"
+                 TextColor="Black"
+                 GroupName="Biome"
+                 Content="Castle" />
+            <RadioButton x:Name="b4" Margin="5"
+                TextColor="Black"
+                GroupName="Biome"
+                Content="Swamp" />
+
+        </VerticalStackLayout>
+
+        <Button Text="Travel"
+            x:Name="btn1"
+            HorizontalOptions="Center" 
+            FontSize="Large"
+            WidthRequest="250"
+            Clicked="NextPage"/>
+
+    </VerticalStackLayout>
+
+</ContentPage>
