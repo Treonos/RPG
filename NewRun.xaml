@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RPG.NewRun"
+             BackgroundColor="Black">
+    <VerticalStackLayout
+        Margin="20"
+        Spacing="40"
+        VerticalOptions="Center"
+        HorizontalOptions="Center">
+        <Entry 
+            Text=""
+            x:Name="Nickname"
+            Placeholder="Nickname"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" 
+            BackgroundColor="White"
+            WidthRequest="400"/>
+
+        <Label Text="Choose your class"
+            TextColor="White"
+            HorizontalOptions="Center"
+            FontSize="Header"/>
+        <VerticalStackLayout
+            BackgroundColor="White">
+
+            <RadioButton x:Name="c1" Margin="5"
+                TextColor="Black"
+                GroupName="Class"
+                Content="Knight" />
+
+            <RadioButton x:Name="c2" Margin="5"
+                TextColor="Black"
+                GroupName="Class"
+                Content="Archer" />
+
+            <RadioButton x:Name="c3" Margin="5"
+                 TextColor="Black"
+                 GroupName="Class"
+                 Content="Mage" />
+
+        </VerticalStackLayout>
+
+        <Button Text="Confirm"
+            x:Name="btn1"
+            HorizontalOptions="Center" 
+            FontSize="Large"
+            WidthRequest="400"
+            Clicked="NextPage" />
+
+    </VerticalStackLayout>
+</ContentPage>
