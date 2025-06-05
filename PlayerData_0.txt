@@ -1,0 +1,237 @@
+{
+  "Class": "Mage",
+  "Biome": "Mountains",
+  "Nickname": "qwerty",
+  "Hp": 210,
+  "MaxHp": 234,
+  "Sp": 186,
+  "MaxSp": 216,
+  "Attack": 20,
+  "Speed": 18,
+  "DmgRedPercentage": 1.3499999,
+  "DodgeChancePercentage": 10,
+  "BaseDodgeChancePercentage": 10,
+  "BaseCritChancePercentage": 10,
+  "CritChancePercentage": 14,
+  "BaseCritMultiplier": 2.5,
+  "CritMultiplier": 2.7,
+  "Level": 2,
+  "CurrentExp": 16,
+  "ExpRequired": 18,
+  "StatPoints": 0,
+  "BaseMaxHp": 100,
+  "BaseMaxSp": 100,
+  "BaseAttack": 10,
+  "BaseSpeed": 15,
+  "BaseDmgRedPercentage": 0,
+  "ClassMaxHpMod": 1,
+  "ClassMaxSpMod": 1.8,
+  "ClassAttackMod": 1.6,
+  "ClassSpeedMod": 1.1,
+  "LevelMaxHpMod": 1.2,
+  "LevelMaxSpMod": 1.2,
+  "LevelAttackMod": 1.1,
+  "LevelSpeedMod": 1.1,
+  "EquippedWeaponId": 0,
+  "EquippedArmorId": 0,
+  "EquippedAmuletId": -1,
+  "ArmorMaxHpMod": 1.95,
+  "ArmorDmgRedPercentage": 1.3499999,
+  "AmuletMaxSpMod": 1,
+  "WeaponAttackMod": 1.17,
+  "WeaponAttackCostMod": 1.1,
+  "WeaponCritChance": 4.25,
+  "WeaponCritMultiplier": 0.2,
+  "AmuletSpeedMod": 1,
+  "AmuletDodgeChance": 0,
+  "StatPointsSpendOnBaseMaxHp": 0,
+  "StatPointsSpendOnBaseMaxSp": 0,
+  "StatPointsSpendOnBaseAttack": 0,
+  "StatPointsSpendOnBaseSpeed": 1,
+  "EmptyWeaponSlots": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "EmptyArmorSlots": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "EmptyAmuletSlots": [
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "WeaponList": [
+    {
+      "AtkCostMod": 1.1,
+      "CritChance": 4.25,
+      "CritMult": 0.2,
+      "Type": "Staff",
+      "AtkMod": 1.17,
+      "Name": "Staff",
+      "Rarity": "Uncommon",
+      "Level": 1
+    },
+    {
+      "AtkCostMod": 0,
+      "CritChance": 0,
+      "CritMult": 0,
+      "Type": "",
+      "AtkMod": 0,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "AtkCostMod": 0,
+      "CritChance": 0,
+      "CritMult": 0,
+      "Type": "",
+      "AtkMod": 0,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "AtkCostMod": 0,
+      "CritChance": 0,
+      "CritMult": 0,
+      "Type": "",
+      "AtkMod": 0,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "AtkCostMod": 0,
+      "CritChance": 0,
+      "CritMult": 0,
+      "Type": "",
+      "AtkMod": 0,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "AtkCostMod": 0,
+      "CritChance": 0,
+      "CritMult": 0,
+      "Type": "",
+      "AtkMod": 0,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    }
+  ],
+  "ArmorList": [
+    {
+      "Type": "Magic Robe",
+      "MaxHpMod": 1.95,
+      "DmgRedPercentage": 1.3499999,
+      "Name": "Magic Robe",
+      "Rarity": "Legendary",
+      "Level": 1
+    },
+    {
+      "Type": "",
+      "MaxHpMod": 1,
+      "DmgRedPercentage": 1,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "Type": "",
+      "MaxHpMod": 1,
+      "DmgRedPercentage": 1,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "Type": "",
+      "MaxHpMod": 1,
+      "DmgRedPercentage": 1,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "Type": "",
+      "MaxHpMod": 1,
+      "DmgRedPercentage": 1,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "Type": "",
+      "MaxHpMod": 1,
+      "DmgRedPercentage": 1,
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    }
+  ],
+  "AmuletList": [
+    {
+      "DodgeChance": 0.25,
+      "SpdMod": 1.31,
+      "Type": "Necklace",
+      "Name": "Necklace",
+      "Rarity": "Uncommon",
+      "Level": 2
+    },
+    {
+      "DodgeChance": 0,
+      "SpdMod": 0,
+      "Type": "",
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "DodgeChance": 0,
+      "SpdMod": 0,
+      "Type": "",
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "DodgeChance": 0,
+      "SpdMod": 0,
+      "Type": "",
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "DodgeChance": 0,
+      "SpdMod": 0,
+      "Type": "",
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    },
+    {
+      "DodgeChance": 0,
+      "SpdMod": 0,
+      "Type": "",
+      "Name": "",
+      "Rarity": "",
+      "Level": 0
+    }
+  ]
+}
